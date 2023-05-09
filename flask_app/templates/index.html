@@ -45,13 +45,20 @@
     <div class="container">
         <h1>Login</h1>
         <form action="/login" method="POST">
+            {% with messages = get_flashed_messages()%}
+            {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             <div>
                 <label for="email">Email: </label>
                 <input type="email" name="email">
             </div>
             <div>
                 <label for="password">Password: </label>
-                <input type="password">
+                <input type="password" name="password">
             </div>
             <div>
                 <button>Login</button>

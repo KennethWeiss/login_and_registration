@@ -29,7 +29,7 @@ def register():
 
 @app.route("/login", methods=["POST"])
 def login():
-    if not user.User.is_valid(request.form):
+    if not user.User.valid_login(request.form):
         return redirect(url_for("index"))
     else:
         data = {

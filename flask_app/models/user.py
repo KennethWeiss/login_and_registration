@@ -38,3 +38,17 @@ class User:
             is_valid = False
             flash("Password must match password confirmation")
         return is_valid
+    
+    @staticmethod
+    def valid_login(user_dict):
+        is_valid = True
+        if len(user_dict["email"]) < 2:
+            is_valid = False
+            flash("Email should have at least 2 characters")
+        if len(user_dict["password"]) < 2:
+            is_valid = False
+            flash("Password should have at least 2 characters")
+        # if user_dict["password_confirmation"] != user_dict["password"]:
+        #     is_valid = False
+        #     flash("Password must match password confirmation")
+        return is_valid 

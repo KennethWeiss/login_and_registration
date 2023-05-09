@@ -10,6 +10,13 @@
     <div class="container">
         <h1>Register</h1>
         <form action="/register" method="POST">
+            {% with messages = get_flashed_messages()%}
+            {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             <div>
                 <label for="first_name">First name: </label>
                 <input type="text" name="first_name">

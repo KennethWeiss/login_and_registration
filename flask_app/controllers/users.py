@@ -25,7 +25,7 @@ def register():
         session["email"] = data["email"]
         session["password"] = data["password"]
 
-    return "Success"
+    return render_template("success.html")
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -48,5 +48,9 @@ def login():
     #         "email": request.form["email"],
     #         "password": bcrypt.generate_password_hash(request.form["password"])
     #     }
-    return "Success"
+    return render_template("success.html")
     
+@app.route("/logout", methods=["POST"])
+def logout():
+    session.clear()
+    return redirect(url_for("index"))

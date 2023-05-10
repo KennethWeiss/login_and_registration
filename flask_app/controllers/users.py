@@ -24,6 +24,7 @@ def register():
         session["last_name"] = data["last_name"]
         session["email"] = data["email"]
         session["password"] = data["password"]
+        session["logged_in"] = True
 
     return render_template("success.html")
 
@@ -41,8 +42,15 @@ def login():
         flash("Invalid login", 'login')
         return redirect(url_for("index"))
     session['email']=request.form['email']
+    session['logged_in'] = True
     return render_template("success.html")
     
+@app.route("/success")
+def success_display():
+    if session.get('logged_in') == True:
+        return render_template("success.html")
+    return "You are not logged in"
+
 @app.route("/logout", methods=["POST"])
 def logout():
     session.clear()

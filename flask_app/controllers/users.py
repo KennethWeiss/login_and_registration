@@ -40,7 +40,7 @@ def login():
     if not bcrypt.check_password_hash(user_from_db.password, request.form["password"]):
         flash("Invalid login", 'login')
         return redirect(url_for("index"))
-
+    session['email']=request.form['email']
     return render_template("success.html")
     
 @app.route("/logout", methods=["POST"])

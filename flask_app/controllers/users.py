@@ -41,13 +41,6 @@ def login():
         flash("Invalid login")
         return redirect(url_for("index"))
 
-    # if not user.User.valid_login(request.form):
-    #     return redirect(url_for("index"))
-    # else:
-    #     data = {
-    #         "email": request.form["email"],
-    #         "password": bcrypt.generate_password_hash(request.form["password"])
-    #     }
     return render_template("success.html")
     
 @app.route("/logout", methods=["POST"])

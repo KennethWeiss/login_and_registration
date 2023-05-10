@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Register</h1>
         <form action="/register" method="POST">
-            {% with messages = get_flashed_messages()%}
+            {% with messages = get_flashed_messages(category_filter=["registration"])%}
             {% if messages %}
             {% for message in messages %}
             <p>{{message}}</p>
@@ -45,7 +45,7 @@
     <div class="container">
         <h1>Login</h1>
         <form action="/login" method="POST">
-            {% with messages = get_flashed_messages()%}
+            {% with messages = get_flashed_messages(category_filter=["login"])%}
             {% if messages %}
             {% for message in messages %}
             <p>{{message}}</p>
